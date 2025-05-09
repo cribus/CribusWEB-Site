@@ -4,36 +4,28 @@ import Emoji from '@/components/twemoji'
 import Link from 'next/link'
 
 const Greetings = () => {
-  // Create reference to store the DOM element containing the animation
   const el = React.useRef(null)
-  // Create reference to store the Typed instance itself
   const typed = React.useRef<Typed | null>(null)
 
   React.useEffect(() => {
     const options = {
       strings: [
         'I was born in 1996.',
-        'I was raised In South of Italy , Potenza.',
+        'I was raised in Southern Italy.',
         'I like 🏊‍♂️ / 🏃 / 🏸.',
         'I like Sports.',
         'I like Cars.',
         'I like LOL 🎮.',
         'I like Music 🎵.',
-        '...',
+        'I build tech solutions 💻.',
       ],
       typeSpeed: 50,
       backSpeed: 50,
       loop: true,
     }
 
-    // elRef refers to the <span> rendered below
     typed.current = new Typed(el.current, options)
-
-    return () => {
-      // Make sure to destroy Typed instance during cleanup
-      // to prevent memory leaks
-      typed.current?.destroy()
-    }
+    return () => typed.current?.destroy()
   }, [])
 
   return (
@@ -47,23 +39,51 @@ const Greetings = () => {
         </p>
 
         <p>
-          I currently live in Italy and have just graduated from UNISA University with a bachelor's
-          degree in Computer Science and Technology. I'm working as a Data Analyst and i love to
-          share with someome my experiences.
+          I'm an IT Specialist from Italy with a Bachelor's degree in Computer Science and
+          Technology (UNISA). I currently work as a Data Analyst and help clients with digital
+          solutions — from PC setups to websites.
         </p>
 
         <div className="type-wrap">
           <span style={{ whiteSpace: 'pre' }} ref={el} />
           <br />
-
-          <p>
-            This website is used to introduce myself, publish some regular blogs about my experience
-            . Feel free to <Link href="/about"> get to know me better.</Link>
-          </p>
+          <p>This website is used to introduce myself and share my work and articles. </p>
         </div>
+
+        <hr />
+
+        <h3>🛠 Services I offer</h3>
+        <ul>
+          <li>💻 Custom PC builds and upgrades</li>
+          <li>🧰 Hardware/Software troubleshooting</li>
+          <li>🌐 Website and blog development</li>
+          <li>🔐 Security & backup setup</li>
+          <li>📦 Tech consultation for small businesses</li>
+        </ul>
+
+        <hr />
+
+        <h3>📞 Contact</h3>
+        <ul>
+          <li>
+            Email: <a href="mailto:cribus96@gmail.com">Work Mail</a>
+          </li>
+          <li>
+            Telegram: <a href="https://t.me/cribus">@cribus_tech</a>
+          </li>
+          <li>Location: Campania, Italy (remote services available)</li>
+        </ul>
+
+        <hr />
+
+        <p>
+          🔗 Looking for my recommendations? Check out my{' '}
+          <Link href="/blog">blog articles</Link> with tools I use daily.
+        </p>
       </div>
     </div>
   )
 }
 
 export default Greetings
+ 

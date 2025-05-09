@@ -11,7 +11,7 @@ export default function About() {
     <>
       <div className="prose max-w-none dark:prose-dark lg:prose-lg">
         {/*<p>*/}
-        {/*  Hi, my name is <b>Zhou Zihang</b>. I'm a computer science student now.*/}
+        {/*  Hi, my name is <b>Christian Celentano</b>. I'm a computer science student now.*/}
         {/*</p>*/}
 
         <h2>Travel Journey</h2>

@@ -77,8 +77,8 @@ const Greetings = () => {
         <hr />
 
         <p>
-          🔗 Looking for my recommendations? Check out my{' '}
-          <Link href="/blog">blog articles</Link> with tools I use daily.
+          🔗 Looking for my recommendations? Check out my <Link href="/blog">blog articles</Link>{' '}
+          with tools I use daily.
         </p>
       </div>
     </div>
@@ -86,4 +86,3 @@ const Greetings = () => {
 }
 
 export default Greetings
- 

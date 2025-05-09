@@ -1,9 +1,9 @@
-import { mkdirSync, writeFileSync } from "fs";
-import path from "path";
-import { escape } from "pliny/utils/htmlEscaper.js";
-import tagData from "../app/tag-data.json" assert { type: "json" };
-import { allPosts } from "../.contentlayer/generated/index.mjs";
-import siteMetadata from "../data/siteMetadata.js";
+import { mkdirSync, writeFileSync } from 'fs'
+import path from 'path'
+import { escape } from 'pliny/utils/htmlEscaper.js'
+import tagData from '../app/tag-data.json' assert { type: 'json' }
+import { allPosts } from '../.contentlayer/generated/index.mjs'
+import siteMetadata from '../data/siteMetadata.js'
 
 const generateRssItem = (config, post) => `
   <item>
@@ -26,7 +26,7 @@ const generateRss = (config, posts, page = 'feed.xml') => `
       <language>${config.language}</language>
       <managingEditor>${config.email} (${config.author})</managingEditor>
       <webMaster>${config.email} (${config.author})</webMaster>
-      <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate>
+      <lastBuildDate>${posts.length > 0 ? new Date(posts[0].date).toUTCString() : new Date().toUTCString()}</lastBuildDate>
       <atom:link href="${config.siteUrl}/${page}" rel="self" type="application/rss+xml"/>
       ${posts.map((post) => generateRssItem(config, post)).join('')}
     </channel>
@@ -43,9 +43,7 @@ async function generateRSS(config, allPosts, page = 'feed.xml') {
 
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
-      const filteredPosts = allPosts.filter((post) =>
-        post.tags.map((t) => t).includes(tag)
-      )
+      const filteredPosts = allPosts.filter((post) => post.tags.map((t) => t).includes(tag))
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
       const rssPath = path.join('public', 'tags', tag)
       mkdirSync(rssPath, { recursive: true })

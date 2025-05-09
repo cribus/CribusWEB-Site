@@ -47,18 +47,18 @@ const Greetings = () => {
         </p>
 
         <p>
-           I currently live in Italy and have just graduated from UNISA University with a
-          bachelor's degree in Computer Science and Technology. I'm working as a Data Analyst and i love to share with someome my experiences.
+          I currently live in Italy and have just graduated from UNISA University with a bachelor's
+          degree in Computer Science and Technology. I'm working as a Data Analyst and i love to
+          share with someome my experiences.
         </p>
-
 
         <div className="type-wrap">
           <span style={{ whiteSpace: 'pre' }} ref={el} />
           <br />
 
           <p>
-            This website is used to introduce myself, publish some regular blogs about my experience . Feel free to{' '}
-            <Link href="/about"> get to know me better.</Link>
+            This website is used to introduce myself, publish some regular blogs about my experience
+            . Feel free to <Link href="/about"> get to know me better.</Link>
           </p>
         </div>
       </div>

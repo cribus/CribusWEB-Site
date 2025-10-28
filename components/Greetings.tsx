@@ -1,11 +1,12 @@
+"use client"
+
 import React from 'react'
-import Typed from 'typed.js'
 import Emoji from '@/components/twemoji'
 import Link from 'next/link'
 
 const Greetings = () => {
-  const el = React.useRef(null)
-  const typed = React.useRef<Typed | null>(null)
+  const el = React.useRef<HTMLSpanElement | null>(null)
+  const typed = React.useRef<any | null>(null)
 
   React.useEffect(() => {
     const options = {
@@ -24,8 +25,22 @@ const Greetings = () => {
       loop: true,
     }
 
-    typed.current = new Typed(el.current, options)
-    return () => typed.current?.destroy()
+    let mounted = true
+
+    import('typed.js')
+      .then((mod) => {
+        if (!mounted || !el.current) return
+        const Typed = mod.default ?? mod
+        typed.current = new Typed(el.current, options)
+      })
+      .catch(() => {
+        /* ignore load error during build */
+      })
+
+    return () => {
+      mounted = false
+      typed.current?.destroy()
+    }
   }, [])
 
   return (

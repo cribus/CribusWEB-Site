@@ -1,15 +1,17 @@
-"use client"
+'use client'
 
 import React from 'react'
+import type Typed from 'typed.js'
+import type { TypedOptions } from 'typed.js'
 import Emoji from '@/components/twemoji'
 import Link from 'next/link'
 
 const Greetings = () => {
   const el = React.useRef<HTMLSpanElement | null>(null)
-  const typed = React.useRef<any | null>(null)
+  const typed = React.useRef<Typed | null>(null)
 
   React.useEffect(() => {
-    const options = {
+    const options: TypedOptions = {
       strings: [
         'I was born in 1996.',
         'I was raised in Southern Italy.',
@@ -30,8 +32,8 @@ const Greetings = () => {
     import('typed.js')
       .then((mod) => {
         if (!mounted || !el.current) return
-        const Typed = mod.default ?? mod
-        typed.current = new Typed(el.current, options)
+        const TypedCtor = ((mod as unknown) as { default?: typeof Typed }).default ?? ((mod as unknown) as typeof Typed)
+        typed.current = new TypedCtor(el.current, options)
       })
       .catch(() => {
         /* ignore load error during build */

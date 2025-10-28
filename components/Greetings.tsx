@@ -71,6 +71,9 @@ const Greetings = () => {
           <li>
             Telegram: <a href="https://t.me/cribus">@cribus_tech</a>
           </li>
+            <li>
+            Telegram Canale Offere : <a href="https://amzn.to/3Vzdkxv">@Offerte_tech</a>
+          </li>
           <li>Location: Campania, Italy (remote services available)</li>
         </ul>
 
